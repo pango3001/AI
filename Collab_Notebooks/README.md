@@ -1,20 +1,9 @@
-# UMSL CS4300
+# UMSL CS4300 Activities
 
 **Tip**: When opening .ipynb files if you get **`Sorry,... Reload?`** error in Github, use **[https://nbviewer.jupyter.org/](https://nbviewer.jupyter.org/)**  
 
-# Classroom activities
-* There will be 20+ classroom activities for you to practice and complete.
-* You will need to complete at least 20 activities in order to receive full points. If you complete more than 20 activities, you will receive a 0.5 bonus point for each activity you complete.
-* The first half set of activities are relatively easy (with Notebooks provided).
-
 # Recommended datasets
 * Classification and regression datasets at https://archive.ics.uci.edu/ml/datasets.php
-
-# What to submit?
-* A link to your Colab notebook (must be publicly accesible with the link) for each activity.
-
-# Example
-* Miguel Corona, a student who is taking this class, has made his activities notebooks publicly accessible through his Github repositories [here](https://github.com/mykon23/AI-2020/tree/master/Activities). You can refer to this to see how others are completing their activities. Thank you Miguel.
 
 --------------  
 
@@ -70,9 +59,64 @@ In this activity, the goal is to practice training a neural network model to per
 What to submit?  
 * A link to your notebook along with your findings and discussions.
 
-## 8. See [here](https://github.com/badriadhikari/AI-2020fall/blob/master/activities/Chapter_activities.md#8-breadth-first-search-bfs-tree-chapter-3).
+## 8. Breadth-first search (BFS) tree (Chapter 3)
+This is not a programming activity. Tracing the [breadth-first search (BFS) algorithm](./bfs.png) for a problem results in a BFS tree. [Here](./bfstree.png) is an example BFS tree. Below is a map of India highlighting some of the international airports in the country. Nick wants to go to Amritsar from Chennai. In PAPER, draw a BFS tree for the graph of airport cities with starting node as Chennai (C).  
 
-## 9. See [here](https://github.com/badriadhikari/AI-2020fall/blob/master/activities/Chapter_activities.md#9-implement-the-breadth-first-search-bfs-algorithm-chapter-3).
+* Lectures: [Uninformed Search Algorithms](https://youtu.be/eyXynZTshP0?t=174)  
+
+<p align="center"> <img src="iia.png" align="middle" width="350"/> </p>
+
+## 9. Implement the breadth-first search (BFS) algorithm (Chapter 3)
+With the help of the code blocks provided below, implement the BFS algorithm (in Python) to find the shortest path from Sibiu to Bucharest in the following map. Note that in a standard BFS algorithm/implementation, we ignore the connection weights.
+
+* Lectures: [Uninformed Search Algorithms](https://youtu.be/eyXynZTshP0?t=174)  
+
+<p align="center"> <img src="map-romania-trimmed.png" align="middle" width="250"/> </p>
+   
+Queue basics in Python:
+```python
+# Initializing a queue 
+queue = []  
+# Adding elements to the queue 
+queue.append('a') 
+queue.append('b') 
+queue.append('c') 
+# Print
+print(queue) 
+# Removing elements from the queue 
+print("\nElements dequeued from queue") 
+print(queue.pop(0)) 
+print(queue.pop(0)) 
+print(queue) 
+```
+
+Representing a graph using dictionary (values are lists of neighbors):
+```
+graph = {}
+graph['Sibiu'] = ['Fagaras', 'Rimnicu Vilcea']
+graph['Fagaras'] = ['Sibiu', 'Bucharest']
+graph['Rimnicu Vilcea'] = ['Sibiu', 'Pitesti', 'Craiova']
+graph['Pitesti'] = ['Rimnicu Vilcea', 'Craiova', 'Bucharest']
+graph['Craiova'] = ['Rimnicu Vilcea', 'Pitesti']
+graph['Bucharest'] = ['Fagaras', 'Pitesti', 'Giurgiu']
+graph['Giurgiu'] = ['Bucharest']
+```
+
+Shortest path using BFS:
+```
+def shortest_path_BFS(graph, start, goal):
+  To Do:
+  To Do:
+   
+
+# Call shortest_path_BFS
+shortest_path_BFS(graph, 'Sibiu', 'Bucharest')
+```
+
+Expected output:
+```
+['Sibiu', 'Fagaras', 'Bucharest']
+```
 
 ## 10. Regression using NN and evaluation
 In this activity, the goal is to practice training a neural network model to perform regression, i.e. predict continuous values. A neural network regression model should be more accurate than a basic linear regression model. This is because a neural network model has more parameters (weights and biases) to learn the patterns in the data. A regression model can be evaluated using metrics such as mean absolute error (MAE). This activity has five tasks: (i) Build a neural network regression model for a dataset of your choice, (ii) Evaluate your model using MAE, (iii) Compare the MAE of your model with a linear regression model, (iv) Assess if your model is biased towards predicting either larger values more correctly or smaller values more correctly, and (v) Experiment with various loss functions such as mae, mse, mean_squared_logarithmic_error, and logcosh, to find out which delivers the lowest MAE.
@@ -125,7 +169,12 @@ What to submit?
   1. What is the difference between generalization, overfitting, and underfitting?
   1. Why should you normalize XVALID separately, i.e. why should we use the parameters from XTRAIN to normalize XVALID?  
 
-## 12. See [here](https://github.com/badriadhikari/AI-2020fall/blob/master/activities/Chapter_activities.md#12-alpha-beta-pruning-chapter-5).
+## 12. Alpha-beta pruning (Chapter 5)
+This is not a programming activity, you will solve it in paper (or in computer, if you prefer). For the following game tree show the values of α and β for all the non-leaf nodes (task 1) and show which nodes/sub-tree will be pruned (task 2) by the Alpha-Beta pruning algorithm. 
+
+* Lectures: [Alpha-beta pruning algorithm](https://www.youtube.com/watch?v=n6mbgKICrVU)
+
+<p align="center"> <img src="alpha-beta.png" align="middle" width="800"/> </p>
  
 ## 13. Learning curves
 This activity assumes that you have successfully completed all previous activities. It also requires some focus. Learning curves are a key to debug and diagnose a model's performance. The goal in this activity is to plot learning curves and to interpret various learning curves. For a regression dataset of your choice, the first step is to shuffle the dataset. The next step is to split the dataset into the four arrays: XTRAIN, YTRAIN, XVALID, and YVALID. The next step is to train a neural network model using `model.fit()`. However, this time, XVALID and YVALID will also be passed as arguments to the `model.fit()` method. This is so when we call the method, it can evaluate the model on the validation set at the end of each epoch (see code block below). It is extremely important to understand that the `model.fit()` method does NOT use the validation dataset to perform the learning, it is only to evaluate the model after each epoch. When calling the `model.fit()` method we can also save its output in a variable, usually named `history`. This variable can be used to plot learning curves (see code block below). The task in this activity is to plot many learning curves in various scenarios. In particular, it is of intererest to observe and analyze how the learning plots look like various settings. The following article discusses learning curves in more detail.
@@ -171,9 +220,44 @@ Below are the hyperparameters to optimize:
 What to submit?  
 * A link to your notebook with all the experiments.
 
-## 15. See [here](https://github.com/badriadhikari/AI-2020fall/blob/master/activities/Chapter_activities.md#15-implement-bm25-function-chapter-22).
+## 15. Implement BM25 function (Chapter 22)  
+The objective in this activity is to search for 'relevant' document/s in a document corpus (database) by implementing the [BM25 scoring function](./bm25.png). Task: A search query “Word1 Word2” is being scored against 40 documents. The number of times the words “Word1” and “Word2” appear in each of the documents is given in the [table](./bm25.csv). Write a Python program to calculate the BM25 score for the query against all the documents and rank the documents by their BM25 score. You will need to compute IDF, DF, TF, N, L, etc. by reading the table. Assume k = 1.2 and b = 0.75. The code block below suggests the structure for your implementation.
 
-## 16. See [here](https://github.com/badriadhikari/AI-2020fall/blob/master/activities/Chapter_activities.md#16-implement-pagerank-algorithm-chapter-22).
+* Lectures: [BM25 scoring function](https://www.youtube.com/watch?v=a3sg6MH8m4k)
+
+```python
+# Step 1: for loops to calculate IDF for Word1 and Word2
+...
+# Step 2: for loop to calculate L
+...
+# Step 3: create a dictionary/list to maintain BM25 for each document
+bm25 = {}
+# Step 4: for loop to calculate BM25 for each document
+for each ...:
+ bm25[doci] = ...
+# Step 5: display documents sorted by score 
+...
+```
+
+## 16. Implement PageRank algorithm (Chapter 22)
+The objective in this activity is to implement a basic version of the PageRank algorithm - a core algorithm originally developed by Google for ranking pages. [Here](./pagerankalgo.png) is the expression for the original version of the PageRank algorithm. Task: For the network shown below, calculate the PageRank of the pages A, B, and C, and D by writing a Python program to iteratively obtain the final page ranks. Assume that the damping parameter d is 0.7. Please follow the solution structure provided in the code block below.   
+* Lectures: [The page-rank algorithm](https://youtu.be/CsvyPNdQAHg).
+
+<p align="center"> <img src="pagerankproblem.png" align="middle" width="200"/> </p>
+
+Structure for the solution:
+  ```python
+  # Step1. Initialize the constants N and d
+  # Step2. Assume that all page ranks are 1.0 at the beginning
+  prA = 1.0
+  ...
+  # Step3. In a for/while loop, iteratively update the page ranks of all the pages
+  for (many times):
+     prA = "expression for prA"
+     ...
+  # Step4. Print the page ranks
+  ```
+
 
 ## 17. Early stopping
 Assumption: You already know (tentatively) what hyperparameters are good for your dataset
@@ -204,7 +288,39 @@ Assumption: You already know (tentatively) what hyperparameters are good for you
   a. Almost always, training with early stopping finishes faster (because it stops early). Approximately, how long does it take for your training to finish with and without early stopping?  
   b. When model checkpointing, your checkpointed model will almost always be more accurate on the validation set. What is the MAE on the Validation set with and without model checkpointing?
 
-## 18. See [here](https://github.com/badriadhikari/AI-2020fall/blob/master/activities/Chapter_activities.md#18-implement-convolution-operation-chapter-24).
+## 18. Implement convolution operation (Chapter 24)
+In this activity you will implement the convolution operation. Your implementation will detect edges in an image. You are required to implement you own convolution function and NOT use existing libraries. Please use the [my-cat.csv](./my-cat.csv) as your input. Your task is to complete the `convolution2D()` function in the code below. Hint: You will need to multiply each input pixel (3x3 neighbor grid) of the input 2D array `image2D` with the input filter `kernel3x3` to obtain the output 2D array `convolved2D`. Note: If you use existing libraries such as `scipy.signal.convolve2d` you will not receive any points for your submission.  
+* Articles: [First four paragraphs under the section "2D Convolutions: The Operation"](https://towardsdatascience.com/intuitively-understanding-convolutions-for-deep-learning-1f6f42faee1)
+* Lectures: [Convolution operation](https://www.youtube.com/watch?v=mjh5NIn1yHk)
+ 
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
+
+def convolution2D(image2D, kernel3x3):
+  convolved2D = np.zeros((len(image2D)-2, len(image2D)-2))
+  # ToDo: Write your code here...
+
+  return convolved2D
+
+image2D = np.loadtxt('my-cat.csv', delimiter=',')
+sns.heatmap(image2D, cmap='gray')
+plt.title('Original image - Size = ' + str(image2D.shape))
+plt.show()
+
+edge_detect_filter_3x3 = np.array([[-1, -1, -1], [-1, 8, -1], [-1, -1, -1]])
+
+for i in range(2):
+  convolved_image = convolution2D(image2D, edge_detect_filter_3x3)
+  sns.heatmap(convolved_image, cmap='gray')
+  plt.title('Convolution iteration ' + str(i) + ' - Size = ' + str(convolved_image.shape))
+  plt.show()
+  image2D = convolved_image
+```
+
+Expected output:
+![](convolution-output.png)  
 
 ## 19. Iterative feature removal & selection
 * As of now, it is assumed that given a dataset (of your choice) you can build a model that can do reasonably well on the validation set, i.e. you have a good idea of the network architecture needed, the number of epochs needed, model Checkpointing, the approximate MAE or accuracy that one might expect, etc.
