@@ -1,5 +1,3 @@
-<img src="supporting_files/umsl.png" align="middle" width="350"/>
-
 # Syllabus of Artificial Intelligence (CS 4300/5300)
 
 ## 1. Instructor/facilitator
@@ -127,10 +125,6 @@ Artificial Intelligence: A Modern Approach (3rd Edition) by [Pearson](https://ww
 
 ## 9. Academic dishonesty
 Any form of academic dishonesty in this class will result in an F for the semester and the case will be referred to the provost's office for possible further disciplinary action, regardless of how trivial it is. Please don't use another student's assignment (or a solution in the internet) to complete your own assignment. Discussing the material is 'OK', but please do your work on your own. You should complete the homework alone, not together, and not in a group. If you have any questions about any of the lessons or the assignments, please contact me, and I will point you in the right direction. Please read [UMSL's policy](https://www.umsl.edu/services/academic/policy/academic-dishonesty.html) and keep yourself out of plagiarism. Also, please remember that our `turnitin` tool also automatically checks for plagiarism.
-
-<p align="center">
-    <img src="supporting_files/academic_dishonesty.gif" align="middle" width="400"/>
-</p>
 
 ## 10. Programming language
 Python3 is language for the course; you are expected to use Python3 for all of your classroom activities, homeworks, and project. You are also required to use [Google colab](https://colab.research.google.com) or your own hosted Jupyter Notebook for running your programs.
